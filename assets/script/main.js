@@ -10,6 +10,7 @@ const Main = {
   cacheSelectors: function () {
     this.wordInput = document.querySelector('#wordInput')
     this.mainWord = document.querySelector('#mainWord')
+    this.phonetics = document.querySelector('#phonetics')
     
 
   },
@@ -20,26 +21,23 @@ const Main = {
   },
 
   Events: {
-    searchWord_input: function() {
-      this.API(data)
-      console.log(data)
-
-
-      
-      
+    searchWord_input: function(e) {
+      this.API().then(data => {
+        mainWord.innerText = data[0].word
+        phonetics.innerText = data[0].phonetics[0].text
+        //console.log(data[0].phonetics[0].text)
+      })
     }
 
   },
 
   API: function () {
-    if (wordInput.value) {
-      fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordInput.value}`)
-        .then(response => response.json())
-        .then(searchWord_input)
-        .catch(function () {
-          alert('ERROR!!!')
-        })
-    }
+
+    return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordInput.value}`)
+      .then(response => response.json())
+      .catch(function () {
+        alert('ERROR!!!')
+      })
     
   },
 

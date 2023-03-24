@@ -28,47 +28,45 @@ const Main = {
       
 
       if (key == 'Enter') {
+        this.meaningInfo.innerText = null
 
         this.DIC().then(data => {
           const word = data[0]
+          console.log(word)
           mainWord.innerText = word.word
-          phonetics.innerText = word.phonetic
-
-          for (let meaning of word.meanings) {
-            let i = 0
-            this.meaningInfo.innerHTML += `
-              <hr>
-              <h4>${meaning.partOfSpeech}</h4>
-              <span>Meaning:</span>
-              <ul>
-                <li>${meaning.definitions[i].definition}</li>
-              </ul>
-            `
-            i++
+          if (word.phonetic){
+            phonetics.innerText = word.phonetic
+          } else if (word.phonetics[1] == undefined) {
+            phonetics.innerText = 'No phonetics available'
+          } else {
+            phonetics.innerText = word.phonetics[1].text
           }
           
-          /*
-          for (let i = 0; i < data[0].meanings.length; i++) {
-            const meaning = document.createElement("span")
-            const meaningNode = document.createTextNode(data[0].meanings[i].partOfSpeech)
-
-            meaning.appendChild(meaningNode)
-            this.wordSection.append(meaning)
-
-
-            const definition = document.createElement("li")
-            const definitionNode = document.createTextNode(data[0].meanings[i].definitions[i].definition)
-            definition.appendChild(definitionNode)
-            this.deflist.appendChild(definition)
-
-            console.log(data[0].meanings[i].definitions[i])
-  
-            
-          }
-          */
           
 
-          console.log(data)
+          
+
+          word.meanings.forEach((item) => {
+            const verbnoun = document.createElement("h4")
+            const span = document.createElement("span")
+            const ul = document.createElement("ul")
+            const textNodevn = document.createTextNode(item.partOfSpeech)
+            verbnoun.appendChild(textNodevn)
+            span.innerText = "Meaning:"
+            this.meaningInfo.appendChild(verbnoun)
+            this.meaningInfo.appendChild(span)
+
+            for (let i = 0; i < item.definitions.length; i++){
+              const li = document.createElement("li")
+              const textNodeli = document.createTextNode(item.definitions[i].definition)
+              li.appendChild(textNodeli)
+              ul.appendChild(li)
+              this.meaningInfo.appendChild(ul)
+                            
+            }
+          })
+
+          //console.log(data)
         })
       }
     }

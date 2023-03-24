@@ -12,6 +12,7 @@ const Main = {
     this.mainWord = document.querySelector('#mainWord')
     this.phonetics = document.querySelector('#phonetics')
     this.meaningInfo = document.querySelector('#meaning-info')
+    this.playSound = document.querySelector('#playSound')
     
     
 
@@ -19,6 +20,7 @@ const Main = {
 
   bindEvents: function() {
     this.wordInput.addEventListener('keypress', this.Events.searchWord_input.bind(this))
+    this.playSound.addEventListener('click', this.Events.playSound_click.bind(this))
     
   },
 
@@ -32,7 +34,7 @@ const Main = {
 
         this.DIC().then(data => {
           const word = data[0]
-          console.log(word)
+          //console.log(word)
           mainWord.innerText = word.word
           if (word.phonetic){
             phonetics.innerText = word.phonetic
@@ -69,6 +71,22 @@ const Main = {
           //console.log(data)
         })
       }
+    },
+
+    playSound_click: function (e) {
+      
+
+      if (wordInput)
+      this.DIC().then(data => {
+        if(data[0].phonetics[0].audio) {
+          console.log(data[0])
+          const audio = new Audio(data[0].phonetics[0].audio)
+          audio.play()
+
+        } else {
+          alert('No audio available')
+        }
+      })
     }
 
   },

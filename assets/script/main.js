@@ -1,3 +1,5 @@
+import header from '../script/header'
+
 
 const Main = {
 

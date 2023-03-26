@@ -76,17 +76,21 @@ const Main = {
     playSound_click: function (e) {
       
 
-      if (wordInput)
-      this.DIC().then(data => {
-        if(data[0].phonetics[0].audio) {
-          console.log(data[0])
-          const audio = new Audio(data[0].phonetics[0].audio)
-          audio.play()
+      if (wordInput.value) {
 
-        } else {
-          alert('No audio available')
-        }
-      })
+        this.DIC().then(data => {
+          if(data[0].phonetics[0].audio) {
+            console.log(data[0])
+            const audio = new Audio(data[0].phonetics[0].audio)
+            audio.play()
+            
+          } else {
+            alert('No audio available')
+          }
+        })
+      } else {
+        alert('You must type a word!')
+      }
     }
 
   },
@@ -96,7 +100,7 @@ const Main = {
     return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordInput.value}`)
       .then(response => response.json())
       .catch(function () {
-        alert('ERROR!!!')
+        alert(error)
       })
     
   },

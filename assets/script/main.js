@@ -1,4 +1,4 @@
-import header from '../script/header'
+
 
 
 const Main = {
@@ -15,6 +15,7 @@ const Main = {
     this.phonetics = document.querySelector('#phonetics')
     this.meaningInfo = document.querySelector('#meaning-info')
     this.playSound = document.querySelector('#playSound')
+    this.footer = document.querySelector("#footer")
     
     
 
@@ -29,6 +30,7 @@ const Main = {
   Events: {
     searchWord_input: function(e) {
       const key = e.key
+      footer.style.position = "relative"
       
 
       if (key == 'Enter') {

@@ -7,6 +7,14 @@ $color-primary-dark: rgb(63, 69, 49);
   box-sizing: border-box;
 }
 
+body {
+  font-family: serif;
+}
+
+.dark-mode {
+  background-color: $color-primary-dark;
+}
+
 
 
 
@@ -25,8 +33,13 @@ $color-primary-dark: rgb(63, 69, 49);
     font-size: 30px;
     margin: 25px 0;
 
+    .dark-mode {
+      color: $color-primary;
+    }
+
     i {
       color: $color-primary-dark;
+
     }
     
     div {
@@ -39,7 +52,9 @@ $color-primary-dark: rgb(63, 69, 49);
         cursor: pointer;
         color: $color-primary-dark;
         font-weight: 700;
-        width: 60px;
+        width: 80px;
+        border-radius: 10px;
+        background-color: $color-primary;
 
       }
 
@@ -56,7 +71,7 @@ $color-primary-dark: rgb(63, 69, 49);
         transition: .5s;
   
         &:checked {
-          background: $color-primary-dark;
+          background: $color-primary;
   
           &::before {
             left: 22px;
@@ -90,6 +105,7 @@ $color-primary-dark: rgb(63, 69, 49);
     width: 100%;
     padding: 15px 0;
     margin-top: 25px;
+    
 
     .box {
       width: 100%;
@@ -133,9 +149,17 @@ $color-primary-dark: rgb(63, 69, 49);
       font-size: 30px;
       color: $color-primary-dark;
       margin-bottom: 25px;
+      
+      .dark-mode {
+        color: $color-primary;
+      }
+
+      #playSound {
+        display: none;
+      }
 
       h6 {
-        color: rgb(111, 29, 27);
+        color: $color-primary-dark;
       }
 
       i {
@@ -152,15 +176,28 @@ $color-primary-dark: rgb(63, 69, 49);
   }
 
   .word-info {
+    .dark-mode {
+      color: red;
+    }
+
     h4 {
       color: $color-primary-dark;
       font-weight: bold;
       margin: 15px 0;
+
+      .dark-mode {
+        color: $color-primary;
+      }
     }
+
     
     ul {
       padding: 25px;
       color: $color-primary-dark;
+
+      .dark-mode {
+        color: $color-primary;
+      }
     }
 
     
@@ -178,6 +215,12 @@ $color-primary-dark: rgb(63, 69, 49);
     bottom: 0;
     width: 100%;
     height: 4.5rem;
+
+    a {
+      text-decoration: none;
+      color: $color-primary-dark;
+      font-weight: bold;
+    }
 
   }
 }

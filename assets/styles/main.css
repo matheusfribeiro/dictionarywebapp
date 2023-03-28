@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: serif;
+}
+
+.dark-mode {
+  background-color: rgb(63, 69, 49);
+}
+
 .container {
   width: 600px;
   height: 100vh;
@@ -19,6 +27,9 @@
   font-size: 30px;
   margin: 25px 0;
 }
+.container .header .dark-mode {
+  color: rgb(212, 224, 155);
+}
 .container .header i {
   color: rgb(63, 69, 49);
 }
@@ -32,7 +43,9 @@
   cursor: pointer;
   color: rgb(63, 69, 49);
   font-weight: 700;
-  width: 60px;
+  width: 80px;
+  border-radius: 10px;
+  background-color: rgb(212, 224, 155);
 }
 .container .header div input[type=checkbox] {
   margin-top: 5px;
@@ -49,7 +62,7 @@
   transition: 0.5s;
 }
 .container .header div input[type=checkbox]:checked {
-  background: rgb(63, 69, 49);
+  background: rgb(212, 224, 155);
 }
 .container .header div input[type=checkbox]:checked::before {
   left: 22px;
@@ -116,8 +129,14 @@
   color: rgb(63, 69, 49);
   margin-bottom: 25px;
 }
+.container .search .display-word .dark-mode {
+  color: rgb(212, 224, 155);
+}
+.container .search .display-word #playSound {
+  display: none;
+}
 .container .search .display-word h6 {
-  color: rgb(111, 29, 27);
+  color: rgb(63, 69, 49);
 }
 .container .search .display-word i {
   cursor: pointer;
@@ -126,14 +145,23 @@
   position: relative;
   top: 30px;
 }
+.container .word-info .dark-mode {
+  color: red;
+}
 .container .word-info h4 {
   color: rgb(63, 69, 49);
   font-weight: bold;
   margin: 15px 0;
 }
+.container .word-info h4 .dark-mode {
+  color: rgb(212, 224, 155);
+}
 .container .word-info ul {
   padding: 25px;
   color: rgb(63, 69, 49);
+}
+.container .word-info ul .dark-mode {
+  color: rgb(212, 224, 155);
 }
 .container footer {
   padding: 25px;
@@ -145,4 +173,9 @@
   bottom: 0;
   width: 100%;
   height: 4.5rem;
+}
+.container footer a {
+  text-decoration: none;
+  color: rgb(63, 69, 49);
+  font-weight: bold;
 }/*# sourceMappingURL=main.css.map */

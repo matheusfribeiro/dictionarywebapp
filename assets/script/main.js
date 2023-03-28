@@ -1,4 +1,4 @@
-
+import {header} from "./header.js"
 
 
 const Main = {
@@ -30,10 +30,13 @@ const Main = {
   Events: {
     searchWord_input: function(e) {
       const key = e.key
-      footer.style.position = "relative"
+      
+      if (key == 'Enter' && (!wordInput.value)) {
+        alert('You must type a word!')
+      } 
       
 
-      if (key == 'Enter') {
+      if (key == 'Enter' && (wordInput.value)) {
         this.meaningInfo.innerText = null
 
         this.DIC().then(data => {
@@ -74,7 +77,11 @@ const Main = {
 
           //console.log(data)
         })
+
+        footer.style.position = "relative"
+        this.playSound.style.display = "block"
       }
+      
     },
 
     playSound_click: function (e) {
@@ -84,7 +91,7 @@ const Main = {
 
         this.DIC().then(data => {
           if(data[0].phonetics[0].audio) {
-            console.log(data[0])
+            
             const audio = new Audio(data[0].phonetics[0].audio)
             audio.play()
             
@@ -104,7 +111,7 @@ const Main = {
     return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordInput.value}`)
       .then(response => response.json())
       .catch(function () {
-        alert(error)
+        
       })
     
   },
@@ -112,3 +119,4 @@ const Main = {
 }
 
 Main.init()
+header.init()

@@ -177,7 +177,7 @@ body {
 
   .word-info {
     .dark-mode {
-      color: red;
+      color: $color-primary;
     }
 
     h4 {
@@ -196,7 +196,7 @@ body {
       color: $color-primary-dark;
 
       .dark-mode {
-        color: $color-primary;
+        background-color: red;
       }
     }
 

@@ -35,14 +35,20 @@ const Main = {
         alert('You must type a word!')
       } 
       
+     
 
       if (key == 'Enter' && (wordInput.value)) {
         this.meaningInfo.innerText = null
 
         this.DIC().then(data => {
           const word = data[0]
-          //console.log(word)
-          mainWord.innerText = word.word
+          if (word == undefined) {
+            alert('Mind your spelling!!!')
+            return
+          } else {
+            
+            //console.log(word)
+            mainWord.innerText = word.word
           if (word.phonetic){
             phonetics.innerText = word.phonetic
           } else if (word.phonetics[1] == undefined) {
@@ -54,7 +60,7 @@ const Main = {
           
 
           
-
+          
           word.meanings.forEach((item) => {
             const verbnoun = document.createElement("h4")
             const span = document.createElement("span")
@@ -71,15 +77,16 @@ const Main = {
               li.appendChild(textNodeli)
               ul.appendChild(li)
               this.meaningInfo.appendChild(ul)
-                            
+              
             }
           })
-
-          //console.log(data)
+          footer.style.position = "relative"
+          this.playSound.style.display = "block"
+        }
+          console.log(data)
         })
 
-        footer.style.position = "relative"
-        this.playSound.style.display = "block"
+        
       }
       
     },

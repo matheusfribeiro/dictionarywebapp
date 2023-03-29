@@ -18,6 +18,8 @@ export const header = {
     this.phonetics = document.querySelector('#phonetics')
     this.meaningInfo = document.querySelector('#meaning-info')
     this.wordInfo = document.querySelector('.word-info')
+    this.ul = document.getElementsByTagName("ul")
+    this.h4 = document.getElementsByTagName("h4")
     
   },
 
@@ -40,8 +42,8 @@ export const header = {
     },
 
     darkmode_checked: function () {
-      console.log(this.icons)
-      if (darkbox) {
+      
+      if (darkbox.checked) { 
         document.body.classList.toggle("dark-mode")
         this.iconBook.classList.toggle("dark-mode")
         this.iconMoon.classList.toggle("dark-mode")
@@ -50,11 +52,33 @@ export const header = {
         this.phonetics.classList.toggle("dark-mode")
         this.meaningInfo.classList.toggle("dark-mode")
         this.wordInfo.classList.toggle("dark-mode")
-      } else {
+
+        for (let i = 0; i < this.ul.length; i++) {
+          let element = this.ul[i]
+          element.style.color = "rgb(212, 224, 155)"
+          }
+        for (let i = 0; i < this.h4.length; i++) {
+          let element = this.h4[i]
+          element.style.color = "rgb(212, 224, 155)"
+          }
+      } else if (!darkbox.checked) {
         document.body.classList.toggle("dark-mode")
         this.iconBook.classList.toggle("dark-mode")
         this.iconMoon.classList.toggle("dark-mode")
         this.iconPlay.classList.toggle("dark-mode")
+        this.mainWord.classList.toggle("dark-mode")
+        this.phonetics.classList.toggle("dark-mode")
+        this.meaningInfo.classList.toggle("dark-mode")
+        this.wordInfo.classList.toggle("dark-mode")
+        
+        for (let i = 0; i < this.ul.length; i++) {
+          let element = this.ul[i]
+          element.style.color = "black"
+          }
+        for (let i = 0; i < this.h4.length; i++) {
+          let element = this.h4[i]
+          element.style.color = "black"
+          }
       }
 
     }

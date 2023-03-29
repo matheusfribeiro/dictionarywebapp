@@ -146,7 +146,7 @@ body {
   top: 30px;
 }
 .container .word-info .dark-mode {
-  color: red;
+  color: rgb(212, 224, 155);
 }
 .container .word-info h4 {
   color: rgb(63, 69, 49);
@@ -161,7 +161,7 @@ body {
   color: rgb(63, 69, 49);
 }
 .container .word-info ul .dark-mode {
-  color: rgb(212, 224, 155);
+  background-color: red;
 }
 .container footer {
   padding: 25px;

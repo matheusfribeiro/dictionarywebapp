@@ -18,6 +18,7 @@ const Main = {
     this.footer = document.querySelector("#footer")
     
     
+    
 
   },
 
@@ -47,7 +48,7 @@ const Main = {
             return
           } else {
             
-            //console.log(word)
+            
             mainWord.innerText = word.word
           if (word.phonetic){
             phonetics.innerText = word.phonetic
@@ -71,6 +72,11 @@ const Main = {
             this.meaningInfo.appendChild(verbnoun)
             this.meaningInfo.appendChild(span)
 
+            if (header.darkbox.checked) {
+              ul.setAttribute("class", "dark-mode")
+              verbnoun.setAttribute("class", "dark-mode")
+            }
+
             for (let i = 0; i < item.definitions.length; i++){
               const li = document.createElement("li")
               const textNodeli = document.createTextNode(item.definitions[i].definition)
@@ -83,10 +89,10 @@ const Main = {
           footer.style.position = "relative"
           this.playSound.style.display = "block"
         }
-          console.log(data)
+          
         })
 
-        
+        console.log(header.darkbox.checked)
       }
       
     },
@@ -112,6 +118,8 @@ const Main = {
     }
 
   },
+
+  
 
   DIC: function () {
 

@@ -161,7 +161,7 @@ body {
   color: rgb(63, 69, 49);
 }
 .container .word-info ul .dark-mode {
-  background-color: red;
+  color: rgb(212, 224, 155);
 }
 .container footer {
   padding: 25px;

@@ -43,42 +43,43 @@ export const header = {
 
     darkmode_checked: function () {
       
+      
       if (darkbox.checked) { 
-        document.body.classList.toggle("dark-mode")
-        this.iconBook.classList.toggle("dark-mode")
-        this.iconMoon.classList.toggle("dark-mode")
-        this.iconPlay.classList.toggle("dark-mode")
-        this.mainWord.classList.toggle("dark-mode")
-        this.phonetics.classList.toggle("dark-mode")
-        this.meaningInfo.classList.toggle("dark-mode")
-        this.wordInfo.classList.toggle("dark-mode")
+        document.body.classList.add("dark-mode")
+        this.iconBook.classList.add("dark-mode")
+        this.iconMoon.classList.add("dark-mode")
+        this.iconPlay.classList.add("dark-mode")
+        this.mainWord.classList.add("dark-mode")
+        this.phonetics.classList.add("dark-mode")
+        this.meaningInfo.classList.add("dark-mode")
+        this.wordInfo.classList.add("dark-mode")
 
         for (let i = 0; i < this.ul.length; i++) {
           let element = this.ul[i]
-          element.style.color = "rgb(212, 224, 155)"
-          }
+          element.classList.add("dark-mode")
+        }
         for (let i = 0; i < this.h4.length; i++) {
           let element = this.h4[i]
-          element.style.color = "rgb(212, 224, 155)"
-          }
+          element.classList.add("dark-mode")
+        }
       } else if (!darkbox.checked) {
-        document.body.classList.toggle("dark-mode")
-        this.iconBook.classList.toggle("dark-mode")
-        this.iconMoon.classList.toggle("dark-mode")
-        this.iconPlay.classList.toggle("dark-mode")
-        this.mainWord.classList.toggle("dark-mode")
-        this.phonetics.classList.toggle("dark-mode")
-        this.meaningInfo.classList.toggle("dark-mode")
-        this.wordInfo.classList.toggle("dark-mode")
+        document.body.classList.remove("dark-mode")
+        this.iconBook.classList.remove("dark-mode")
+        this.iconMoon.classList.remove("dark-mode")
+        this.iconPlay.classList.remove("dark-mode")
+        this.mainWord.classList.remove("dark-mode")
+        this.phonetics.classList.remove("dark-mode")
+        this.meaningInfo.classList.remove("dark-mode")
+        this.wordInfo.classList.remove("dark-mode")
         
         for (let i = 0; i < this.ul.length; i++) {
           let element = this.ul[i]
-          element.style.color = "black"
-          }
+          element.classList.remove("dark-mode")
+        }
         for (let i = 0; i < this.h4.length; i++) {
           let element = this.h4[i]
-          element.style.color = "black"
-          }
+          element.classList.remove("dark-mode")
+        }
       }
 
     }

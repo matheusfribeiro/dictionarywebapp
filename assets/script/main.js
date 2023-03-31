@@ -6,6 +6,7 @@ const Main = {
   init: function () {
     this.cacheSelectors()
     this.bindEvents()
+    this.urlcheck()
     
   },
 
@@ -16,6 +17,7 @@ const Main = {
     this.meaningInfo = document.querySelector('#meaning-info')
     this.playSound = document.querySelector('#playSound')
     this.footer = document.querySelector("#footer")
+    this.nextURL = ''
     
     
     
@@ -47,52 +49,51 @@ const Main = {
             alert('Mind your spelling!!!')
             return
           } else {
-            
-            
+
             mainWord.innerText = word.word
-          if (word.phonetic){
-            phonetics.innerText = word.phonetic
-          } else if (word.phonetics[1] == undefined) {
-            phonetics.innerText = 'No phonetics available'
-          } else {
-            phonetics.innerText = word.phonetics[1].text
+            if (word.phonetic){
+              phonetics.innerText = word.phonetic
+            } else if (word.phonetics[1] == undefined) {
+              phonetics.innerText = 'No phonetics available'
+            } else {
+              phonetics.innerText = word.phonetics[1].text
+            }
+          
+            word.meanings.forEach((item) => {
+              const verbnoun = document.createElement("h4")
+              const span = document.createElement("span")
+              const ul = document.createElement("ul")
+              const textNodevn = document.createTextNode(item.partOfSpeech)
+              verbnoun.appendChild(textNodevn)
+              span.innerText = "Meaning:"
+              this.meaningInfo.appendChild(verbnoun)
+              this.meaningInfo.appendChild(span)
+
+              if (header.darkbox.checked) {
+                ul.setAttribute("class", "dark-mode")
+                verbnoun.setAttribute("class", "dark-mode")
+              }
+
+              for (let i = 0; i < item.definitions.length; i++){
+                const li = document.createElement("li")
+                const textNodeli = document.createTextNode(item.definitions[i].definition)
+                li.appendChild(textNodeli)
+                ul.appendChild(li)
+                this.meaningInfo.appendChild(ul)
+                
+              }
+            })
+            footer.style.position = "relative"
+            this.playSound.style.display = "block"
           }
-          
-          
 
-          
-          
-          word.meanings.forEach((item) => {
-            const verbnoun = document.createElement("h4")
-            const span = document.createElement("span")
-            const ul = document.createElement("ul")
-            const textNodevn = document.createTextNode(item.partOfSpeech)
-            verbnoun.appendChild(textNodevn)
-            span.innerText = "Meaning:"
-            this.meaningInfo.appendChild(verbnoun)
-            this.meaningInfo.appendChild(span)
 
-            if (header.darkbox.checked) {
-              ul.setAttribute("class", "dark-mode")
-              verbnoun.setAttribute("class", "dark-mode")
-            }
-
-            for (let i = 0; i < item.definitions.length; i++){
-              const li = document.createElement("li")
-              const textNodeli = document.createTextNode(item.definitions[i].definition)
-              li.appendChild(textNodeli)
-              ul.appendChild(li)
-              this.meaningInfo.appendChild(ul)
-              
-            }
-          })
-          footer.style.position = "relative"
-          this.playSound.style.display = "block"
-        }
+          history.pushState({}, "", word.word)
+          console.log(window.location.href)
           
         })
-
-        console.log(header.darkbox.checked)
+        
+        
       }
       
     },
@@ -116,6 +117,39 @@ const Main = {
         alert('You must type a word!')
       }
     }
+
+  },
+
+  urlcheck: function () {
+    /*
+    const myURL = new URL(window.location.href)
+    //myURL.search = 'name=dom'
+    myURL.searchParams.set("word", "test")
+    console.log(myURL.searchParams.get("word"))
+    
+
+    //console.log(window.location.href)
+    //http://127.0.0.1:5500/index.html
+
+
+    const myURL = new URL(this.nextURL)
+    myURL.searchParams.get("word")
+
+
+
+
+
+    this.nextURL = `http://127.0.0.1:5500/index.html/word=${word.word}`;
+    const nextTitle = 'Page title';
+    const nextState = { additionalInformation: 'Updated the URL with JS' }; 
+
+    window.history.replaceState(nextState, nextTitle, this.nextURL);
+    */
+
+    
+
+    
+
 
   },
 

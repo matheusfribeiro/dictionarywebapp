@@ -136,7 +136,7 @@ const Main = {
     myURL.searchParams.get("word")
 
 
-
+      test
 
 
     this.nextURL = `http://127.0.0.1:5500/index.html/word=${word.word}`;

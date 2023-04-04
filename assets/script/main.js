@@ -174,21 +174,15 @@ const Main = {
                 
               }
             })
+
             footer.style.position = "relative"
             this.playSound.style.display = "block"
           }
 
             
         })
-      
-
 
     }
-
-    
-
-    
-
 
   },
 

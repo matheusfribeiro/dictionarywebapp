@@ -1,6 +1,5 @@
 import {header} from "./header.js"
 
-
 const Main = {
 
   init: function () {
@@ -18,9 +17,6 @@ const Main = {
     this.playSound = document.querySelector('#playSound')
     this.footer = document.querySelector("#footer")
     this.myURL = new URL(window.location.href)
-    
-    
-    
 
   },
 
@@ -37,8 +33,6 @@ const Main = {
       if (key == 'Enter' && (!wordInput.value)) {
         alert('You must type a word!')
       } 
-      
-     
 
       if (key == 'Enter' && (wordInput.value)) {
         this.meaningInfo.innerText = null
@@ -87,18 +81,12 @@ const Main = {
             this.playSound.style.display = "block"
           }
 
-
           console.log(window.location.href)
           this.myURL.hash = word.word
           history.pushState({}, "",  this.myURL.hash)
           console.log(this.myURL)
-          
-          
         })
-        
-        
       }
-      
     },
 
     playSound_click: function (e) {
@@ -179,14 +167,9 @@ const Main = {
             this.playSound.style.display = "block"
           }
 
-            
         })
-
     }
-
   },
-
-  
 
   DIC: function () {
 
@@ -197,7 +180,6 @@ const Main = {
       })
     
   },
-
 }
 
 Main.init()
